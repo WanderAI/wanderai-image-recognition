@@ -17,6 +17,9 @@ jobs:
 
     env:
       IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}
+      GCR_TAG: ${{ github.run_id }}
+      SERVICE_NAME: ${{ github.ref == 'refs/heads/master' && 'image-production' || 'image-staging' }}
+      REGION: asia-southeast2
 
     steps:
       - name: Print image tag
@@ -53,3 +56,17 @@ jobs:
           elif [ "${{ github.ref }}" = "refs/heads/staging" ]; then
             docker push $IMAGE_NAME/image-staging:$GITHUB_RUN_ID
           fi
+      
+      - name: Auth GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/image-${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }}:${GCR_TAG} \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --allow-unauthenticated \
+            --port 8000
