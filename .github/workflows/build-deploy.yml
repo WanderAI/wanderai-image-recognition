@@ -70,6 +70,6 @@ jobs:
             --region ${{ env.REGION }} \
             --allow-unauthenticated \
             --port 8000 \
-            --min-instances=1 \
+            --min-instances=${{ github.ref == 'refs/heads/master' && '1' || '0' }} \
             --max-instances=${{ github.ref == 'refs/heads/master' && '5' || '1' }} \
             --memory=4Gi
