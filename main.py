@@ -14,7 +14,7 @@ modelx = tf.saved_model.load(model_path)
 
 @app.get("/")
 async def home():
-    return {"message": "Welcome to Rey's API!"}
+    return {"message": "Welcome to Image Recognition API!"}
 
 @app.post("/predict")
 async def upload_image(file: UploadFile = File(...)):
