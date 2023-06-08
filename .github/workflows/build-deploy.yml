@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Copy model from GCS
-        run: gsutil cp -r gs://wanderai/ ./model_transfer_learning.h5
+        run: gsutil cp -r gs://wanderai/model_transfer_learning.h5/ .
 
       - name: Build Docker image
         run: |
