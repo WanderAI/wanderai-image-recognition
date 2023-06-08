@@ -71,5 +71,5 @@ jobs:
             --allow-unauthenticated \
             --port 8000 \
             --min-instances=1 \
-            --max-instances=5 \
+            --max-instances=${{ github.ref == 'refs/heads/master' && '5' || '1' }} \
             --memory=4Gi
