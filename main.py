@@ -1,5 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse
 import uvicorn
 import tensorflow as tf
 import io
@@ -18,23 +18,30 @@ async def home():
 
 @app.post("/predict")
 async def upload_image(file: UploadFile = File(...)):
-    contents = await file.read()
-    print("Loading Image")
-    img = image.load_img(io.BytesIO(contents), target_size=(150, 150))
-    # Importing the image to be predicted
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = x / 255.
+    try:
+        contents = await file.read()
+        print("Loading Image")
+        img = image.load_img(io.BytesIO(contents), target_size=(150, 150))
+        # Importing the image to be predicted
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = x / 255.
 
-    print("Making a Prediction")
-    # Prediction
-    prediction = modelx(x)
+        print("Making a Prediction")
+        # Prediction
+        prediction = modelx(x)
 
-    class_labels = ['ampera', 'gadang', 'gwk', 'kotatua', 'monas', 'ulundanu']
-    label = class_labels[np.argmax(prediction)]
-    probability = float(np.max(prediction))  # Convert numpy.float32 to Python float
+        class_labels = ['ampera', 'gadang', 'gwk', 'kotatua', 'monas', 'ulundanu']
+        label = class_labels[np.argmax(prediction)]
+        probability = float(np.max(prediction))  # Convert numpy.float32 to Python float
 
-    return {"prediction": label, "probability": probability}
+        return {"message": "success", "data": {"prediction": label, "probability": probability}}
+
+    except Exception as e:
+        return JSONResponse(
+            status_code=401,
+            content={"message": "Invalid image file.", "details": str(e)}
+        )
 
 
 if __name__ == '__main__':
