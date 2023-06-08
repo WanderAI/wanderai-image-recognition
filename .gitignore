@@ -102,3 +102,5 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
+
+model_transfer_learning.h5
