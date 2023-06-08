@@ -2,14 +2,12 @@
 
 ## How to do prediction
 
-> cd notebook
+<pre> <code> cd notebook </code> </pre>
 
-> python -m venv env
+<pre> <code> python -m venv env  </code> </pre>
 
-> env\Scripts\activate (windows) or source env/bin/activate (mac)
+<pre> <code>  env\Scripts\activate (windows) or source env/bin/activate (mac)  </code> </pre>
 
+<pre> <code>  python -m pip install -r requirements.txt  </code> </pre>
 
-> python -m pip install -r requirements.txt
-
-
-> python make_a_prediction.py (ganti directory model dan image)
+<pre> <code>  python make_a_prediction.py (ganti directory model dan image) </code> </pre>
