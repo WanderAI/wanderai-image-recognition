@@ -5,6 +5,7 @@ import tensorflow as tf
 import io
 from tensorflow.keras.preprocessing import image
 import numpy as np
+from places_data import places_data
 
 app = FastAPI()
 
@@ -35,14 +36,28 @@ async def upload_image(file: UploadFile = File(...)):
         label = class_labels[np.argmax(prediction)]
         probability = float(np.max(prediction))  # Convert numpy.float32 to Python float
 
-        return {"message": "success", "data": {"prediction": label, "probability": probability}}
+        detail = places_data.get(label)
+
+        if detail:
+            return {
+                "message": "success",
+                "prediction": label,
+                "detail": detail,
+                "probability": probability
+            }
+        else:
+            return {
+                "message": "success",
+                "prediction": label,
+                "detail": None,
+                "probability": probability
+            }
 
     except Exception as e:
         return JSONResponse(
             status_code=401,
             content={"message": "Invalid image file.", "details": str(e)}
         )
-
 
 if __name__ == '__main__':
     uvicorn.run('main:app', host='0.0.0.0', port=8000, log_level="info")
