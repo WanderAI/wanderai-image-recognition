@@ -40,14 +40,12 @@ async def upload_image(file: UploadFile = File(...)):
 
         if detail:
             return {
-                "message": "success",
                 "prediction": label,
                 "detail": detail,
                 "probability": probability
             }
         else:
             return {
-                "message": "success",
                 "prediction": label,
                 "detail": None,
                 "probability": probability
