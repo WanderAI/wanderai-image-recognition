@@ -19,20 +19,19 @@ dataset = pd.read_csv("_Resto_for_ImageRecog.csv")
 def get_restaurant(prediction, dataset_resto):
     monas = "ChIJLbFk59L1aS4RyLzp4OHWKj0"
     museum_fatahillah = "ChIJfaWSQv8dai4RRQeMZy0D8BI"
-    print("prediction: " + prediction)
     if prediction == "monas":
         place_id = monas
     elif prediction == "kotatua":
         place_id = museum_fatahillah
+    else :
+        return None
 
     nearest_resto = dataset_resto[dataset_resto["par_id"] == place_id].sort_values(["popularity", "distance_part_of_cluster"], ascending=[False, False])
-    print("nearest_resto =")
-    print(nearest_resto)
 
     top_20 = nearest_resto.sample(n=20)
     selection = top_20.sample(n=7).sort_values("popularity", ascending=False)
 
-    return selection.to_json(orient="records")
+    return json.loads(selection.to_json(orient="records"))
 
 @app.get("/")
 async def home():
@@ -59,7 +58,7 @@ async def upload_image(file: UploadFile = File(...)):
 
         detail = places_data.get(label)
 
-        detail["restaurant"] = json.loads(get_restaurant(prediction = label, dataset_resto = dataset))
+        detail["restaurant"] = get_restaurant(prediction = label, dataset_resto = dataset)
 
         if detail:
             return {
