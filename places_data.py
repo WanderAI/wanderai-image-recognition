@@ -1,6 +1,7 @@
 places_data = {
     "ampera": {
         "nama": "Jembatan Ampera",
+        "image_url": "https://storage.googleapis.com/wanderai/images/ampera.jpg",
         "summary": "Jembatan Ampera adalah sebuah jembatan terkenal yang melintasi Sungai Musi di Kota Palembang, Sumatera Selatan, Indonesia. Jembatan ini memiliki nilai sejarah yang penting dan menjadi landmark kota.",
         "rating_tourism": 4.8,
         "important_facts": [
@@ -12,6 +13,7 @@ places_data = {
     },
     "gadang": {
         "nama": "Jam Gadang",
+        "image_url": "https://storage.googleapis.com/wanderai/images/gadang.jpg",
         "summary": "Jam Gadang adalah sebuah menara jam ikonik yang terletak di Kota Bukittinggi, Sumatera Barat, Indonesia. Jam Gadang menjadi landmark penting dan tujuan wisata populer di daerah tersebut.",
         "rating_tourism": 4.6,
         "important_facts": [
@@ -23,6 +25,7 @@ places_data = {
     },
     "gwk": {
         "nama": "Garuda Wisnu Kencana",
+        "image_url": "https://storage.googleapis.com/wanderai/images/gwk.jpg",
         "summary": "Garuda Wisnu Kencana (GWK) adalah sebuah monumen yang terletak di Bukit Ungasan, Bali, Indonesia. Monumen ini menggambarkan sosok dewa Garuda bersama dewa Wisnu, yang merupakan bagian dari mitologi Hindu.",
         "rating_tourism": 4.5,
         "important_facts": [
@@ -34,6 +37,7 @@ places_data = {
     },
     "kotatua": {
         "nama": "Museum Fatahillah",
+        "image_url": "https://storage.googleapis.com/wanderai/images/fatahillah.jpg",
         "summary": "Museum Fatahillah, juga dikenal sebagai Museum Sejarah Jakarta, terletak di Kota Tua Jakarta, Indonesia. Museum ini terletak di bangunan bersejarah bernama Gedung Arsip Nasional, yang pada awalnya adalah gedung pengadilan Belanda yang dibangun pada abad ke-18.",
         "rating_tourism": 4.7,
         "important_facts": [
@@ -45,6 +49,7 @@ places_data = {
     },
     "monas": {
         "nama": "Monumen Nasional",
+        "image_url": "https://storage.googleapis.com/wanderai/images/monas.jpg",
         "summary": "Monumen Nasional atau yang disingkat dengan Monas atau Tugu Monas adalah monumen peringatan perlawanan dan perjuangan rakyat Indonesia dalam merebut kemerdekaan dari pemerintahan kolonial Kekaisaran Belanda.",
         "rating_tourism": 4.6,
         "important_facts": [
@@ -56,6 +61,7 @@ places_data = {
     },
     "ulundanu": {
         "nama": "Pura Ulun Danu Bratan",
+        "image_url": "https://storage.googleapis.com/wanderai/images/ulundanu.jpg", 
         "summary": "Pura Ulun Danu, juga dikenal sebagai Pura Ulun Danu Bratan, adalah sebuah pura yang terletak di tepi danau Bratan, di provinsi Bali, Indonesia. Pura ini adalah salah satu pura yang paling terkenal dan dianggap sebagai ikon pariwisata Bali.",
         "rating_tourism": 4.7,
         "important_facts": [
